@@ -1,0 +1,83 @@
+<div class="profile-container">
+  <header class="profile-header">
+    <h1>User Profile</h1>
+    <div class="header-actions">
+      <button class="back-btn" routerLink="/dashboard">← Back to Dashboard</button>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="profile-content">
+    <div class="profile-card" *ngIf="!loading && !error">
+      <div class="profile-info">
+        <div class="avatar">
+          <span class="avatar-initial">{{ getDisplayName().charAt(0).toUpperCase() }}</span>
+        </div>
+        <h2>{{ getDisplayName() }}</h2>
+        <p class="username">{{ '@' + (userProfile?.username || '') }}</p>
+      </div>
+
+      <div class="details-section">
+        <h3>Personal Information</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <label>User ID:</label>
+            <span>{{ userProfile?.id || 'N/A' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Username:</label>
+            <span>{{ userProfile?.username || 'N/A' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Email:</label>
+            <span>{{ userProfile?.email || 'N/A' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>First Name:</label>
+            <span>{{ userProfile?.firstName || 'N/A' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Last Name:</label>
+            <span>{{ userProfile?.lastName || 'N/A' }}</span>
+          </div>
+          <div class="detail-item">
+            <label>Email Verified:</label>
+            <span [class]="userProfile?.emailVerified ? 'status-verified' : 'status-unverified'">
+              {{ userProfile?.emailVerified ? 'Yes' : 'No' }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="roles-section">
+        <h3>Assigned Roles</h3>
+        <div class="roles-container">
+          <span class="role-badge" *ngFor="let role of userRoles">{{ role }}</span>
+          <p *ngIf="userRoles.length === 0" class="no-roles">No roles assigned</p>
+        </div>
+      </div>
+
+      <div class="attributes-section" *ngIf="userProfile && userProfile.attributes">
+        <h3>Additional Attributes</h3>
+        <div class="attributes-grid">
+          <div class="attribute-item" *ngFor="let attr of userProfile.attributes | keyvalue">
+            <label>{{ attr.key }}:</label>
+            <span>{{ attr.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-state" *ngIf="loading">
+      <div class="spinner"></div>
+      <p>Loading profile...</p>
+    </div>
+
+    <div class="error-state" *ngIf="error && !loading">
+      <div class="error-icon">⚠️</div>
+      <h3>Error Loading Profile</h3>
+      <p>{{ error }}</p>
+      <button class="retry-btn" (click)="loadUserProfile()">Retry</button>
+    </div>
+  </main>
+</div>

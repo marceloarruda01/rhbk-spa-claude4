@@ -1,0 +1,16 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1>RHBK SSO Demo</h1>
+    <div *ngIf="!isAuthenticated; else authenticated">
+      <p>Welcome! Please log in to access the application.</p>
+      <button class="login-btn" (click)="login()">
+        <i class="icon-login"></i>
+        Login with RHBK
+      </button>
+    </div>
+    <ng-template #authenticated>
+      <p>You are already logged in!</p>
+      <a routerLink="/dashboard" class="dashboard-link">Go to Dashboard</a>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: rhbk-keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
+      KC_HOSTNAME_STRICT: "false"
+    ports:
+      - "8080:8080"
+    command: start-dev
+    networks:
+      - rhbk-network
+
+networks:
+  rhbk-network:
+    driver: bridge

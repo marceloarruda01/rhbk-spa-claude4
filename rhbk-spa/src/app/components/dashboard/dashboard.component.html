@@ -1,0 +1,60 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>RHBK Dashboard</h1>
+    <div class="user-info">
+      <span>Welcome, {{ username }}!</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <div class="card-grid">
+      <div class="info-card">
+        <h2>User Information</h2>
+        <div class="info-item">
+          <label>Username:</label>
+          <span>{{ username }}</span>
+        </div>
+        <div class="info-item">
+          <label>Roles:</label>
+          <span class="roles">
+            <span class="role-badge" *ngFor="let role of userRoles">{{ role }}</span>
+            <span *ngIf="userRoles.length === 0" class="no-roles">No roles assigned</span>
+          </span>
+        </div>
+        <div class="info-item">
+          <label>Token Status:</label>
+          <span [class]="isTokenExpired ? 'status-expired' : 'status-valid'">
+            {{ isTokenExpired ? 'Expired' : 'Valid' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="actions-card">
+        <h2>Actions</h2>
+        <div class="action-buttons">
+          <button class="action-btn primary" routerLink="/profile">
+            View Profile
+          </button>
+          <button class="action-btn secondary" (click)="showToken()">
+            Show Access Token
+          </button>
+          <button class="action-btn warning" (click)="updateToken()" *ngIf="isTokenExpired">
+            Refresh Token
+          </button>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h2>SSO Demo Features</h2>
+        <ul class="feature-list">
+          <li>✅ Keycloak Authentication</li>
+          <li>✅ Token Management</li>
+          <li>✅ Role-based Access</li>
+          <li>✅ Silent Token Refresh</li>
+          <li>✅ Protected Routes</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</div>
