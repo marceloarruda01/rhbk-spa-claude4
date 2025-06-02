@@ -1,0 +1,1 @@
+Create an SPA app with Angular 19 to test SSO login on Red Hat Build of Keycloak (RHBK).
