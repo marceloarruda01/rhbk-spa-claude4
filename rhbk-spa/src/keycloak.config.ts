@@ -1,11 +1,12 @@
 import { KeycloakOptions } from 'keycloak-angular';
+import { environment } from './environments/environment';
 
 // Keycloak configuration
 export const keycloakConfig: KeycloakOptions = {
   config: {
-    url: 'http://localhost:8080', // Your RHBK server URL
-    realm: 'demo', // Your realm name
-    clientId: 'rhbk-spa-client', // Your client ID
+    url: environment.keycloak.url,
+    realm: environment.keycloak.realm,
+    clientId: environment.keycloak.clientId,
   },
   initOptions: {
     onLoad: 'check-sso',
