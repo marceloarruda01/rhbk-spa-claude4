@@ -28,10 +28,22 @@
             {{ isTokenExpired ? 'Expired' : 'Valid' }}
           </span>
         </div>
+        <div class="info-item">
+          <label>Time until expiry:</label>
+          <span [class]="timeUntilExpiry <= 60 ? 'status-warning' : 'status-info'">
+            {{ formatTime(timeUntilExpiry) }}
+          </span>
+        </div>
+        <div class="info-item">
+          <label>Token expires at:</label>
+          <span class="status-info">
+            {{ tokenExpiryTime > 0 ? (tokenExpiryTime * 1000 | date:'medium') : 'Unknown' }}
+          </span>
+        </div>
       </div>
 
       <div class="actions-card">
-        <h2>Actions</h2>
+        <h2>Token Management</h2>
         <div class="action-buttons">
           <button class="action-btn primary" routerLink="/profile">
             View Profile
@@ -39,20 +51,25 @@
           <button class="action-btn secondary" (click)="showToken()">
             Show Access Token
           </button>
-          <button class="action-btn warning" (click)="updateToken()" *ngIf="isTokenExpired">
+          <button class="action-btn info" (click)="updateToken()">
             Refresh Token
+          </button>
+          <button class="action-btn warning" (click)="forceRefreshToken()">
+            Force Refresh Token
           </button>
         </div>
       </div>
 
       <div class="demo-card">
-        <h2>SSO Demo Features</h2>
+        <h2>PKCE + Refresh Token Features</h2>
         <ul class="feature-list">
           <li>✅ Keycloak Authentication</li>
-          <li>✅ Token Management</li>
+          <li>✅ PKCE Flow (S256)</li>
+          <li>✅ Automatic Token Refresh</li>
           <li>✅ Role-based Access</li>
-          <li>✅ Silent Token Refresh</li>
           <li>✅ Protected Routes</li>
+          <li>✅ Real-time Token Status</li>
+          <li>✅ No Silent SSO iframes</li>
         </ul>
       </div>
     </div>
