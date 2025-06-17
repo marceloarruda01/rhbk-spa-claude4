@@ -118,6 +118,16 @@
   font-weight: 600;
 }
 
+.status-warning {
+  color: #ed8936;
+  font-weight: 600;
+}
+
+.status-info {
+  color: #3182ce;
+  font-weight: 500;
+}
+
 .action-buttons {
   display: flex;
   flex-direction: column;
@@ -161,6 +171,15 @@
 
 .action-btn.warning:hover {
   background: #dd6b20;
+}
+
+.action-btn.info {
+  background: #3182ce;
+  color: white;
+}
+
+.action-btn.info:hover {
+  background: #2c5aa0;
 }
 
 .feature-list {

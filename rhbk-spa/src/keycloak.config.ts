@@ -1,7 +1,7 @@
 import { KeycloakOptions } from 'keycloak-angular';
 import { environment } from './environments/environment';
 
-// Keycloak configuration
+// Keycloak configuration with PKCE and refresh token strategy
 export const keycloakConfig: KeycloakOptions = {
   config: {
     url: environment.keycloak.url,
@@ -10,10 +10,14 @@ export const keycloakConfig: KeycloakOptions = {
   },
   initOptions: {
     onLoad: 'check-sso',
-    silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+    flow: 'standard',
+    pkceMethod: 'S256', // Enable PKCE for better security
     checkLoginIframe: false,
+    // Removed silentCheckSsoRedirectUri - using refresh tokens instead
   },
   enableBearerInterceptor: true,
   bearerPrefix: 'Bearer',
   bearerExcludedUrls: ['/assets'],
+  shouldAddToken: () => true,
+  shouldUpdateToken: () => true,
 };
