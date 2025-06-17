@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isTokenExpired: boolean = false;
   tokenExpiryTime: number = 0;
   timeUntilExpiry: number = 0;
-  private interval: any;
+  private interval: number;
 
   constructor(private authService: AuthService) { }
 

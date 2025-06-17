@@ -5,7 +5,7 @@ import { KeycloakService } from 'keycloak-angular';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
-  private tokenRefreshInterval: any;
+  private tokenRefreshInterval: number;
   private readonly TOKEN_REFRESH_MARGIN = 30; // seconds before expiry
   private readonly CHECK_INTERVAL = 10000; // 10 seconds
 
