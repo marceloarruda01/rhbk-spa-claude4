@@ -5,7 +5,7 @@ import { KeycloakService } from 'keycloak-angular';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
-  private tokenRefreshInterval: number;
+  private tokenRefreshInterval: number | undefined;
   private readonly TOKEN_REFRESH_MARGIN = 30; // seconds before expiry
   private readonly CHECK_INTERVAL = 10000; // 10 seconds
 
@@ -37,7 +37,7 @@ export class AuthService implements OnDestroy {
       clearInterval(this.tokenRefreshInterval);
     }
 
-    this.tokenRefreshInterval = setInterval(() => {
+    this.tokenRefreshInterval = window.setInterval(() => {
       this.checkAndRefreshToken();
     }, this.CHECK_INTERVAL);
   }
@@ -55,7 +55,7 @@ export class AuthService implements OnDestroy {
       if (this.keycloakService.isTokenExpired(this.TOKEN_REFRESH_MARGIN)) {
         console.log('Token expiring soon, refreshing...');
         const refreshed = await this.keycloakService.updateToken(this.TOKEN_REFRESH_MARGIN);
-        
+
         if (refreshed) {
           console.log('Token refreshed successfully');
         } else {
