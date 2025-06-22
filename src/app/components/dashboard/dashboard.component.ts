@@ -15,7 +15,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isTokenExpired: boolean = false;
   tokenExpiryTime: number = 0;
   timeUntilExpiry: number = 0;
-  private interval: number;
+  // The interval variable is used to store the ID returned by window.setInterval.
+  // It is initialized as undefined and updated when the timer starts.
+  private interval: number | undefined;
 
   constructor(private authService: AuthService) { }
 
@@ -41,7 +43,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   startTokenExpiryTimer() {
-    this.interval = setInterval(() => {
+    this.interval = window.setInterval(() => {
       if (this.authService.isAuthenticated()) {
         this.timeUntilExpiry = this.authService.getTimeUntilTokenExpiry();
         this.isTokenExpired = this.authService.isTokenExpired();
@@ -88,10 +90,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   formatTime(seconds: number): string {
     if (seconds <= 0) return 'Expired';
-    
+
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    
+
     if (minutes > 0) {
       return `${minutes}m ${remainingSeconds}s`;
     }
