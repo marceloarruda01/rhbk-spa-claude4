@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   isTokenExpired: boolean = false;
   tokenExpiryTime: number = 0;
   timeUntilExpiry: number = 0;
+  // The interval variable is used to store the ID returned by window.setInterval.
+  // It is initialized as undefined and updated when the timer starts.
   private interval: number | undefined;
 
   constructor(private authService: AuthService) { }
