@@ -1,10 +1,10 @@
 # RHBK SPA Demo
 
-An Angular 19 Single Page Application (SPA) that demonstrates SSO login integration with Red Hat Build of Keycloak (RHBK).
+An Angular 20 Single Page Application (SPA) that demonstrates SSO login integration with Red Hat Build of Keycloak (RHBK).
 
 ## Features
 
-- ✅ Angular 19 with standalone components
+- ✅ Angular 20 with standalone components
 - ✅ Keycloak authentication integration
 - ✅ JWT token management
 - ✅ Protected routes with auth guards
