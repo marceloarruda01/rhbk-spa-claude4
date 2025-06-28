@@ -1,10 +1,10 @@
-# RHBK SPA - Red Hat Build of Keycloak Angular 19 Test Application
+# RHBK SPA - Red Hat Build of Keycloak Angular 20 Test Application
 
-A modern Angular 19 Single Page Application (SPA) designed to test and demonstrate SSO (Single Sign-On) integration with Red Hat Build of Keycloak (RHBK).
+A modern Angular 20 Single Page Application (SPA) designed to test and demonstrate SSO (Single Sign-On) integration with Red Hat Build of Keycloak (RHBK).
 
 ## 🚀 Features
 
-- **Angular 19** with the latest features and performance improvements
+- **Angular 20** with the latest features and performance improvements
 - **Keycloak Integration** using `keycloak-angular` adapter
 - **SSO Authentication** with login, logout, and token management
 - **Route Protection** with authentication guards
@@ -208,7 +208,7 @@ export const keycloakConfig = {
 
 - [SETUP.md](./SETUP.md) - Detailed setup and configuration guide
 - [Keycloak Angular Documentation](https://www.npmjs.com/package/keycloak-angular)
-- [Angular 19 Documentation](https://angular.dev/)
+- [Angular 20 Documentation](https://angular.dev/)
 - [Red Hat Build of Keycloak](https://access.redhat.com/products/red-hat-build-of-keycloak)
 
 ## 🤝 Contributing
